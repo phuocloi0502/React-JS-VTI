@@ -1,0 +1,76 @@
+.card {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.525);
+    border-radius: 5px;
+    box-shadow: 0px 11px 25px 0px rgba(0, 0, 0, 0.1),
+        0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.card:hover {
+    border: 1px solid blue;
+
+}
+
+.card-head {
+    font-size: 50px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.525);
+    background-color: rgba(208, 207, 206, 0.555);
+}
+
+.card-main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 70px;
+    gap: 20px;
+}
+
+.card-main-price .price {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.card-main-price .month {
+    font-size: 30px;
+    font-weight: 200;
+    color: rgb(182, 180, 180);
+}
+
+.card-main-desc ul li {
+    list-style-type: none;
+    font-size: 25px;
+}
+
+.card-main-button {
+    margin-top: 20px;
+}
+
+.card-main-button button {
+    width: 100%;
+    border: 1px solid blue;
+    background-color: blue;
+    color: white;
+    font-size: 25px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.card-main-button button:hover {
+    color: blue;
+    border: 1px solid blue;
+    background-color: white;
+}
+
+.card-main-button button:active {
+    border: 2px solid blue;
+    padding: 9px;
+
+}
