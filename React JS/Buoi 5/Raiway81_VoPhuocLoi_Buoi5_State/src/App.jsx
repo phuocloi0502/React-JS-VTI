@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -46,17 +46,35 @@ function App() {
       action: "Contact us"
     }
   ];
+  const [data,setData] = useState(cardData);
+  // useEffect(()=>{
+  //   //call API
+  //   fetch("")
+  //   .then( (resStr) =>{
+  //     // convert string to json
+  //     return resStr.json
+  //   })
+  //   .then((res) =>{
+  //     setData(res.slice(1,10))
+
+  //   })
+  //   .catch((err) =>{
+  //     console.log("error: ",err)
+  //   })
+  // },[]); //[] null
 
 
   return (
+<>
 
-    <div className="container">
+<div className="container">
       <Head />
       <TopContent />
       <MainContent data={cardData} />
-      <Footer />
-
     </div>
+    <Footer></Footer>
+</>
+    
   )
 }
 

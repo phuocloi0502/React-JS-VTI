@@ -7,9 +7,12 @@ export const Footer = () => {
     setTitle(!title);
     // true => false
     // fasle => true
-    const 
-const changeText =
+    
   };
+  const [mytext, setText] = useState(true);
+    const changeText = () =>{   
+        setText(!mytext);
+        }
   return (
     <div>
       <footer>
@@ -18,9 +21,8 @@ const changeText =
             {title ? 'Quote of the Day' : 'We are hero'}
           </h6>
           <h6>---***---</h6>
-          <p className="info-ft">
-            "We are like butterflies who flutter for a day and think it is
-            forever."
+          <p className="info-ft" onClick={() => changeText()}>
+           {mytext ?  'We are like butterflies who flutter for a day and think it is forever.' : "Click me"}
           </p>
           <p className="author-ft">Carl Sagan</p>
         </div>
