@@ -142,7 +142,7 @@ const MyformCheckBox=() =>{
         </div>
     )
 }
-const MyHook=() =>{
+const MyEffect=() =>{
     const [myData,setMyData] =useState([]);
     useEffect( () =>{
         let flag = false;
@@ -184,7 +184,8 @@ const MyHook=() =>{
     )
 }
 
-export { Counter, Gift ,MyformInput,MyformRadio,MyformCheckBox,MyHook};
+
+export { Counter, Gift ,MyformInput,MyformRadio,MyformCheckBox,MyEffect};
 
 
 
