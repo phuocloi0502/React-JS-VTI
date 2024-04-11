@@ -16,7 +16,7 @@ function useFetch(id){
             console.log('err', err);
           });
         return () => (flag = true);
-    },id)
+    },[id])
     return [data,setData];
 }
 export default useFetch;
