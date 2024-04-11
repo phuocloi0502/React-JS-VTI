@@ -10,7 +10,7 @@ export const Footer = () => {
     
   };
   const [mytext, setText] = useState(true);
-    const changeText = () =>{   
+  const changeText = () =>{   
         setText(!mytext);
         }
   return (
