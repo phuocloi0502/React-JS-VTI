@@ -5,7 +5,6 @@ import useFetch from './customHook/useFetch';
 function App() {
   const buttons = ["1", "2", "3"];
   const [id, setId] = useState(1);
-
   const [myData, setMyData] = useFetch(id);
   console.log("Id: ", id);
   console.log("myData: ", myData);
@@ -33,14 +32,16 @@ function App() {
           ))
 
         }
-        <div>
-          <ul style={{ textAlign: "left" }}>
-            <li>ID: {myData.id}</li>
-            <li>Name: {myData.name}</li>
-            <li>User Name: {myData.username}</li>
-            <li>Phone: {myData.phone}</li>
-          </ul>
-        </div>
+        {myData === undefined ? "Loading..." : (
+          <div>
+            <ul style={{ textAlign: "left" }}>
+              <li>ID: {myData.id}</li>
+              <li>Name: {myData.name}</li>
+              <li>User Name: {myData.username}</li>
+              <li>Phone: {myData.phone}</li>
+            </ul>
+          </div>
+        )}
       </div>
     </>
   )
