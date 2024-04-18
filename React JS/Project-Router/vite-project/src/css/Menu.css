@@ -1,0 +1,21 @@
+.main-menu{
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    color: white;
+    display: flex;
+    list-style-type: none;
+    gap: 30px;
+    justify-content: center;
+}
+.main-menu .menu-item a{
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+  
+}
+.main-menu .menu-item:hover{
+ 
+    background-color: rgb(173, 177, 181);
+}
+
