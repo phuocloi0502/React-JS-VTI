@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { Descriptions,Avatar } from "antd";
 import useFetch from "../customHooks/useFetch";
+import "../css/UserDetail.css"
 export const UserDetail = () => {
     const { id } = useParams();
     const url = `https://65a147d0600f49256fb154ce.mockapi.io/users`;
@@ -35,7 +36,7 @@ export const UserDetail = () => {
       ]);
     console.log(id);
     return (
-        <div>
+        <div className="UserDetail">
             {data &&  <Descriptions title="User Info" layout="vertical" items={items} />}
         </div>
     )

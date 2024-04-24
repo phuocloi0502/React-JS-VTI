@@ -13,8 +13,6 @@
    flex: 2;
    margin: 0 auto;
    display: block;
-   max-height: 700px !important;
-   overflow-y: scroll;
    border-bottom: 1px solid black;
    
 }

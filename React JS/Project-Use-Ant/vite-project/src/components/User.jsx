@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserForm } from "./UserForm";
 import useFetch from "../customHooks/useFetch"
-import { Table, Avatar, Space, Button, Modal } from "antd"
+import { Table, Avatar, Space, Button, Modal,Flex } from "antd"
 import {
     DeleteOutlined,
     EditOutlined
@@ -28,8 +28,12 @@ export const User = () => {
 
                 return (
                     <div key={record.id}>
-                        <Avatar  src={_} />
-
+                         <Flex vertical={"column"} justify={"center"} align={"center"}>
+                         <Avatar src={_} />
+                        <p>{record.fullname}</p>
+                         </Flex>
+                      
+                       
                     </div>
                 );
             },
@@ -39,11 +43,11 @@ export const User = () => {
             dataIndex: 'username',
             key: 'username',
         },
-        {
-            title: 'Full Name',
-            dataIndex: 'fullname',
-            key: 'fullname',
-        },
+        // {
+        //     title: 'Full Name',
+        //     dataIndex: 'fullname',
+        //     key: 'fullname',
+        // },
         {
             title: 'Address',
             dataIndex: 'address',
@@ -105,76 +109,8 @@ export const User = () => {
 
     return (
         <div className="User">
-
-
             <div className="User-Content">
                 <h1>List User</h1>
-                {/* <table className="table-user">
-                    <thead>
-                        <tr>
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Avatar
-                            </th>
-                            <th>
-                                Username
-                            </th>
-                            <th>
-                                Fullname
-                            </th>
-                            <th>
-                                Address
-                            </th>
-                            <th>
-                                Phone
-                            </th>
-                            <th>
-                                Action
-                            </th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data && data.map((mydata,) => (
-
-                            <tr>
-                                <td key={mydata.id}>
-                                    {mydata.id}
-                                </td>
-                                <td >
-                                    <img src={mydata.avatar} />
-
-                                </td>
-                                <td>
-                                    {mydata.username}
-                                </td>
-                                <td>
-                                    {mydata.fullname}
-                                </td>
-                                <td>
-                                    {mydata.address}
-                                </td>
-                                <td>
-                                    {mydata.phone}
-                                </td>
-                                <td >
-                                    <div className="user-action" >
-                                        <FiEdit className="edit-action" />
-                                        <MdDeleteForever className="delete-action" />
-                                    </div>
-
-                                </td>
-                            </tr>
-                        ))
-
-                        }
-
-                    </tbody>
-
-                </table> */}
-
                 <Table dataSource={data} columns={columns} />;
                 <Modal
                     title="Delete item user"
@@ -188,7 +124,7 @@ export const User = () => {
                     </p>
                 </Modal>
             </div>
-            <UserForm />
+            {/* <UserForm /> */}
         </div>
     );
 }
