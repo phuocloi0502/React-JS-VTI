@@ -1,0 +1,68 @@
+.User{
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+  
+
+}
+.User-Content{
+   flex: 2;
+   margin: 0 auto;
+   display: block;
+   max-height: 700px !important;
+   overflow-y: scroll;
+   border-bottom: 1px solid black;
+   
+}
+
+.table-user{
+    
+    border-collapse: collapse;
+    position: relative;
+    border: 1px solid black;
+    border-top: 0px;
+    font-size: 20px;
+    
+   
+   
+    
+}
+.table-user thead th{
+    position: sticky;
+   top:0;
+    background-color: azure;
+   
+}
+.table-user tbody tr{
+    border-bottom: 1px solid rgb(209, 199, 199);
+}
+.table-user td,th{
+    padding: 10px;
+}
+.table-user tbody img{
+    width: 48px;
+    height: 48px;
+}
+.user-action{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 0;
+}
+.edit-action{
+    width: 24px;
+    height: 24px;
+    color: green
+}
+
+.delete-action{
+    width: 24px;
+    height: 24px;
+    color: red
+}
+
+

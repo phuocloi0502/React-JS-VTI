@@ -1,0 +1,20 @@
+
+.Home-Page{
+    background-image: url("../assets/bg-homepage.jpg");
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.Home-Page-Title{
+    font-size: 70px; 
+    color: rgb(48, 106, 206);
+    
+}
+.Home-Page-Content{
+    margin-top: 50px;
+}

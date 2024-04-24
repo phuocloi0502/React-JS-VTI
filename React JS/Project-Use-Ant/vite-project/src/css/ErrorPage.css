@@ -1,0 +1,40 @@
+.error-page{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    background-color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.error-icon{
+    margin: 0 auto;
+    font-size: 150px;
+    color: rgb(160, 9, 9);
+    
+}
+.error-page>div{
+    margin: 10px;
+    font-size: 100px;
+}
+.error-page h1{
+    margin: 20px;
+}
+.error-page a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+.error-page button{
+    width: 200px;
+    margin:  0 auto;
+    padding: 20px;
+    background-color: rgb(0, 19, 128);
+    border:  transparent;
+    border-radius: 8px;
+}
+.error-page button:hover{
+    border: 1px solid rgb(36, 139, 195);
+    padding: 19px;
+}
