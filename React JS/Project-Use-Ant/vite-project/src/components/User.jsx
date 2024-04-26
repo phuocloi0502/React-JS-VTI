@@ -24,6 +24,13 @@ export const User = () => {
 
     const columns = [
         {
+            title:"ID",
+            dataIndex:'id',
+            key:'id',
+            sorter: (a, b) => a.id-b.id,
+            defaultSortOrder: 'descend',
+        },
+        {
             title: 'Avatar',
             dataIndex: 'avatar',
             key: 'avartar',
@@ -84,7 +91,7 @@ export const User = () => {
     ];
     const handleCancel = () => {
         setItem(null);
-        setCloseModalCreate(false)
+        setCloseModalDelete(false)
     }
     const handleOk = () => {
 
@@ -133,7 +140,7 @@ export const User = () => {
                 {
                     data === null ? (<Spin tip="Loading" size="large" fullscreen={true} >
                         <div className="content" />
-                    </Spin>) : (<Table dataSource={data} columns={columns} />)
+                    </Spin>) : (<Table dataSource={data} columns={columns} size="small" />)
                 }
                 <Modal
                     title="Delete item user"
@@ -148,7 +155,7 @@ export const User = () => {
                 </Modal>
 
 
-                <Spin style={{ position: "relative" }, { zIndex: "1233" }} tip="Loading" size="large" fullscreen={true} spinning={isSpinning}>
+                <Spin style={ { zIndex: "1233" }} tip="Loading" size="large" fullscreen={true} spinning={isSpinning}>
                     <div className="content" />
 
                 </Spin>

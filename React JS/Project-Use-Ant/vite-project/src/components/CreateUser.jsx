@@ -1,6 +1,7 @@
-import { Form, Input, Button,Upload } from "antd";
+import { Form, Input, Button, Alert, Space,Spin } from "antd";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import {UploadOutlined} from '@ant-design/icons'
+import { UploadOutlined } from '@ant-design/icons'
 export const CreateUser = () => {
     const url = `https://65a147d0600f49256fb154ce.mockapi.io/users`;
     const [formData, setFormData] = useState({
@@ -10,13 +11,34 @@ export const CreateUser = () => {
         address: "",
         avatar: "",
     });
+    const [avatar, setAvatar] = useState();
+    const [isSpinning,setIsSpinning] =useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+
+
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState, [name]: value,
-        }));
+
+        if (name == "avatar") {
+            const file = e.target.files[0];
+            file.preview = URL.createObjectURL(file);
+            setAvatar(file);
+            setFormData(pre => ({
+                ...pre,
+                avatar: file.preview
+            }))
+
+        } else {
+            setFormData(prevState => ({
+                ...prevState,
+
+                [name]: value,
+            }));
+        }
+
     }
 
+    console.log(formData)
     const options = {
         method: 'POST',
         headers: {
@@ -25,16 +47,53 @@ export const CreateUser = () => {
         body: JSON.stringify(formData)
     }
     const createUser = () => {
-        console.log(JSON.stringify(formData))
+        setIsSpinning(true);
+        console.log(JSON.stringify(formData))  
         fetch(url, options)
             .then(response => response.json())
-            .then(data => console.log(data, "success"))
+            .then((data) => {
+                setIsSpinning(false)
+                setShowAlert(true);
+
+                console.log("sucess")
+            })
             .catch(error => console.error(error));
     }
 
     return (
         <div style={{ textAlign: "center" }}>
+              <Spin style={{  zIndex: "1233" }} tip="Loading" size="large" fullscreen={true} spinning={isSpinning}>
+                    <div className="content" />
+
+                </Spin>
+            {
+                showAlert && (
+                    <Alert
+                        message="Created"
+                        type="success"
+                        description={formData.username}
+                        showIcon
+                        action={
+                            <Space direction="vertical">
+                                <Link to="/user">
+                                    <Button size="small" type="primary">
+                                        View List
+                                    </Button>
+                                </Link>
+
+
+                                <Button size="small" type="primary" onClick={()=>(setShowAlert(false))}>
+                                    Close
+                                </Button>
+
+                            </Space>
+                        }
+
+                    />
+                )
+            }
             <h1 style={{ marginBottom: "20px" }}>Create user</h1>
+
             <Form
                 name="basic"
                 labelCol={{
@@ -107,7 +166,7 @@ export const CreateUser = () => {
                         },
                     ]}
                 >
-                   
+
                     <Input
                         name="address"
                         value={formData.address}
@@ -123,18 +182,20 @@ export const CreateUser = () => {
                         },
                     ]}
                 >
-                     <Upload
-                        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-                        listType="picture"
-                       // defaultFileList={[...fileList]}
-                        className="upload-list-inline"
-                    >
-                        <Button icon={<UploadOutlined />}>Upload</Button>
-                    </Upload>
-                    <Input
+                    <input
                         name="avatar"
-                        value={formData.avatar}
+                        type="file"
+                        accept="image/*"
                         onChange={handleChange} />
+
+                    {
+                        avatar && (
+                            <img src={avatar.preview} />
+                        )
+                    }
+
+
+
                 </Form.Item>
                 <Button type="primary" onClick={createUser} htmlType="submit">
                     Create
