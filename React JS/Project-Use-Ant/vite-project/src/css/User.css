@@ -1,3 +1,9 @@
+.content {
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+ 
+  }
 .User{
     padding-top: 50px;
     display: flex;
@@ -14,6 +20,7 @@
    margin: 0 auto;
    display: block;
    border-bottom: 1px solid black;
+   text-align: center;
    
 }
 

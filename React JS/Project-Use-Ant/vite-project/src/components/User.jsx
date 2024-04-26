@@ -2,8 +2,9 @@ import "../css/User.css"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserForm } from "./UserForm";
+import { CreateUser } from "./CreateUser";
 import useFetch from "../customHooks/useFetch"
-import { Table, Avatar, Space, Button, Modal,Flex } from "antd"
+import { Table, Avatar, Space, Button, Modal, Flex, Spin } from "antd"
 import {
     DeleteOutlined,
     EditOutlined
@@ -14,8 +15,10 @@ import {
 export const User = () => {
     const url = `https://65a147d0600f49256fb154ce.mockapi.io/users`;
     const [isChange, setIsChange] = useState(true)
+    const [isSpinning, setIsSpinning] = useState(false);
     const [data, setData] = useFetch('', url, isChange);
-    const [isModalOpen, setCloseModal] = useState(false);
+    const [isModalDeleteOpen, setCloseModalDelete] = useState(false);
+    const [isModalCreateOpen, setCloseModalCreate] = useState(false);
     const [item, setItem] = useState(null)
 
 
@@ -28,12 +31,12 @@ export const User = () => {
 
                 return (
                     <div key={record.id}>
-                         <Flex vertical={"column"} justify={"center"} align={"center"}>
-                         <Avatar src={_} />
-                        <p>{record.fullname}</p>
-                         </Flex>
-                      
-                       
+                        <Flex vertical={"column"} justify={"center"} align={"center"}>
+                            <Avatar src={_} />
+                            <p>{record.fullname}</p>
+                        </Flex>
+
+
                     </div>
                 );
             },
@@ -80,49 +83,75 @@ export const User = () => {
         },
     ];
     const handleCancel = () => {
-        setCloseModal(!isModalOpen);
         setItem(null);
+        setCloseModalCreate(false)
     }
     const handleOk = () => {
-        fetch(`${url}/${item?.id}`, { method: 'DELETE' })
+
+        setIsSpinning(true);
+        fetch(`${url}/${item?.id}`, { method: 'DELETE' } )
             .then(() => {
                 setItem(null);
                 // close modal
-                setCloseModal(!isModalOpen);
+                setCloseModalDelete(!isModalDeleteOpen);
             })
             .then(() => {
                 // load list user
+                setIsSpinning(false);
                 setIsChange(!isChange);
             });
     }
     const handleDelete = (props) => {
-        setCloseModal(!isModalOpen);
+        setCloseModalDelete(!isModalDeleteOpen);
         console.log(props, 'props');
         setItem(props);
     };
 
-    const handlDetail = (props) => {
-        console.log(props);
-        <Link to={`/userdetail/${props.id}`}></Link>
+    const handleCreate = () => {
+        setCloseModalCreate(!isModalCreateOpen);
     }
+
 
 
     return (
         <div className="User">
             <div className="User-Content">
+
                 <h1>List User</h1>
-                <Table dataSource={data} columns={columns} />;
+                <div
+                    style={{ textAlign: "right", margin: "10px" }}
+                    onClick={handleCreate}
+
+                >
+                    <Link to={"/user/add"}>
+                        <Button type="primary"  >
+                            + Create user
+                        </Button>
+                    </Link>
+
+                </div>
+                {
+                    data === null ? (<Spin tip="Loading" size="large" fullscreen={true} >
+                        <div className="content" />
+                    </Spin>) : (<Table dataSource={data} columns={columns} />)
+                }
                 <Modal
                     title="Delete item user"
-                    open={isModalOpen}
+                    open={isModalDeleteOpen}
                     onOk={handleOk}
                     onCancel={handleCancel}
                 >
                     <p>
-                        are u sure delete item{' '}
+                        Are u sure delete item{' '}
                         <span style={{ color: 'red' }}>{item?.fullname}</span> ?
                     </p>
                 </Modal>
+
+
+                <Spin style={{ position: "relative" }, { zIndex: "1233" }} tip="Loading" size="large" fullscreen={true} spinning={isSpinning}>
+                    <div className="content" />
+
+                </Spin>
             </div>
             {/* <UserForm /> */}
         </div>

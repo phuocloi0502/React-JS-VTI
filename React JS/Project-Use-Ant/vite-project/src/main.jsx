@@ -8,6 +8,7 @@ import { Contact } from './components/Contact.jsx'
 import { ErrorPage } from './components/ErrorPage.jsx'
 import { UserDetail } from './components/UserDetail.jsx'
 import './index.css'
+import { CreateUser } from './components/CreateUser.jsx'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path:"/userdetail/:id",
         element:<UserDetail/>,
+      },
+      {
+        path:"/user/add",
+        element:<CreateUser/>,
       },
     ],
   },
