@@ -24,10 +24,10 @@ export const User = () => {
 
     const columns = [
         {
-            title:"ID",
-            dataIndex:'id',
-            key:'id',
-            sorter: (a, b) => a.id-b.id,
+            title: "ID",
+            dataIndex: 'id',
+            key: 'id',
+            sorter: (a, b) => a.id - b.id,
             defaultSortOrder: 'descend',
         },
         {
@@ -83,6 +83,12 @@ export const User = () => {
                     <Button type="primary" danger onClick={() => handleDelete(props)}>
                         <DeleteOutlined />
                     </Button>
+                    <Link to={`/user/edit/${props.id}`}>
+                        <Button type="primary" style={{ background: "green" }} >
+                            <EditOutlined />
+                        </Button>
+                    </Link>
+
                 </Space>
 
 
@@ -96,7 +102,7 @@ export const User = () => {
     const handleOk = () => {
 
         setIsSpinning(true);
-        fetch(`${url}/${item?.id}`, { method: 'DELETE' } )
+        fetch(`${url}/${item?.id}`, { method: 'DELETE' })
             .then(() => {
                 setItem(null);
                 // close modal
@@ -138,7 +144,7 @@ export const User = () => {
 
                 </div>
                 {
-                    data === null ? (<Spin tip="Loading" size="large" fullscreen={true} >
+                    Object.keys(data).length ==0 ? (<Spin tip="Loading" size="large" fullscreen={true} >
                         <div className="content" />
                     </Spin>) : (<Table dataSource={data} columns={columns} size="small" />)
                 }
@@ -155,7 +161,7 @@ export const User = () => {
                 </Modal>
 
 
-                <Spin style={ { zIndex: "1233" }} tip="Loading" size="large" fullscreen={true} spinning={isSpinning}>
+                <Spin style={{ zIndex: "1233" }} tip="Loading" size="large" fullscreen={true} spinning={isSpinning}>
                     <div className="content" />
 
                 </Spin>

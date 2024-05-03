@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 function useFetch(param, url,isChange) {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({});
     useEffect(() => {
         let flag = false;
         fetch(`${url}/${param}`)

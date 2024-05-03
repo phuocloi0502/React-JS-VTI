@@ -10,7 +10,7 @@ export const UserDetail = () => {
   const [loading, setLoading] = useState(true);
   // data && (setLoading(!loading));
   useEffect(()=>{
-    data ?(setLoading(!loading)):(setLoading(loading));
+    Object.keys(data).length ==0  ?(setLoading(!loading)):(setLoading(loading));
     console.log("second")
   },[data])
   const { Meta } = Card;

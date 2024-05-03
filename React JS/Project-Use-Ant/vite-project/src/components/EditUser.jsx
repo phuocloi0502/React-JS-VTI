@@ -1,17 +1,22 @@
 import { Form, Input, Button, Alert, Space, Spin } from "antd";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link,useParams } from "react-router-dom";
+import { useState,useEffect } from "react";
 import { UploadOutlined } from '@ant-design/icons'
 import "../css/UserForm.css"
 import { UserForm } from "./UserForm";
-export const CreateUser = () => {
-    const url = `https://65a147d0600f49256fb154ce.mockapi.io/users`;
-    const [formData, setFormData] = useState({
+import useFetch from "../customHooks/useFetch";
+export const EditUser = () => {
 
-    });
- 
+    const url = `https://65a147d0600f49256fb154ce.mockapi.io/users`;
+    const { id } = useParams();
+    const [data, setData] = useFetch(id, url);
+    const [isSpinning, setIsSpinning] = useState(true);
+    useEffect(()=>{
+        Object.keys(data).length ==0 ?(setIsSpinning(!isSpinning)): (<></>);
+      },[data])
+
+    console.log("data: ",data)
     const [avatar, setAvatar] = useState();
-    const [isSpinning, setIsSpinning] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
 
 
@@ -21,15 +26,15 @@ export const CreateUser = () => {
         if (name == "avatar") {
             const file = e.target.files[0];
             file.preview = URL.createObjectURL(file);
-            setAvatar(file.preview);
-            setFormData(pre => ({
+            setAvatar(file);
+            setData(pre => ({
                 ...pre,
                 avatar: file.preview
             }))
-            console.log("avatar: ",avatar)
 
-        } else {
-            setFormData(pre => ({
+        }
+         else {
+            setData(pre => ({
                 ...pre,
 
                 [name]: value,
@@ -39,17 +44,17 @@ export const CreateUser = () => {
     }
 
     const options = {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(data)
     }
-    const createUser = () => {
-        console.log("Form data: ", formData)
-        if (Object.keys(formData).length > 4) {
+    const updateUser = () => {
+        let myUrl=`https://65a147d0600f49256fb154ce.mockapi.io/users/${id}`
+        if (Object.keys(data).length > 4) {
             setIsSpinning(true);
-            fetch(url, options)
+            fetch(myUrl, options)
                 .then(response => response.json())
                 .then((data) => {
                     setIsSpinning(false)
@@ -69,9 +74,9 @@ export const CreateUser = () => {
             {
                 showAlert && (
                     <Alert
-                        message="Created"
+                        message="Updated"
                         type="success"
-                        description={formData.username}
+                        description={data.username}
                         showIcon
                         action={
                             <Space direction="vertical">
@@ -93,12 +98,13 @@ export const CreateUser = () => {
                 )
             }
             <UserForm
-                data={formData}
+                data={data}
                 handleInput={handleChange}
-                handleAction={createUser}
-                avatar={avatar}
-                text={"Create"}
+                handleAction={updateUser}
+                avatar={data.avatar}
+                text={"Update"}
             >
+              
 
             </UserForm>
             

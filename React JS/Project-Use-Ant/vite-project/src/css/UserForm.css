@@ -1,76 +1,18 @@
-.user-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.MyForm {
+
     background-color: #FAFCFE;
     border-radius: 8px;
-    left: 20px;
     box-shadow: 5px 0px 20px #d8dadd;
     padding: 50px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 100;
+    font-weight: 400;
     color: rgb(39, 50, 102);
     width: 50%;
     margin: auto;
     font-size: 20px;
-    padding: 10px;
-    flex:1
-
 }
 
-.row {
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
+button {
+
     margin: 10px;
 
-}
-
-.row input{
-    width: 50%;
-    height: 40px;
-    flex: 2;
-    border: solid 1px #D3D3D3;
-    border-radius: 4px;
-    transition: 1s;
-    font-size: 16px;
-    font-weight: 100;
-    color:#273266
-    
-}
-
-.row input:hover{
-    box-shadow: 0 0 10pt 0.5pt #D3D3D3;
-}
-.row input:focus{
-    outline-width: 0;
-}
-.row label{
-    text-align: left;
-    flex:1 ;
-}
-.button-action {
-    color: white;
-    border: transparent;
-    padding: 10px;
-    border-radius: 8px;
-    margin: 10px;
-    font-size: 20px;
-    font-weight: 500;
-    width: 200px;
-}
-.button-action:hover{
-    padding: 9px;
-    border: 1px solid rgb(211, 147, 147);
-}
-.button-action:active{
-    padding: 8px;
-    border: 2px solid rgb(211, 147, 147);
-}
-.add{
-    background: blue;
-
-}
-.edit{
-    background: green;
 }
