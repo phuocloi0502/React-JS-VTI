@@ -26,7 +26,7 @@ export const CreateUser = () => {
                 ...pre,
                 avatar: file.preview
             }))
-            console.log("avatar: ",avatar)
+
 
         } else {
             setFormData(pre => ({
@@ -98,6 +98,7 @@ export const CreateUser = () => {
                 handleAction={createUser}
                 avatar={avatar}
                 text={"Create"}
+                required={true}
             >
 
             </UserForm>

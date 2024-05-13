@@ -1,4 +1,4 @@
-import "../css/User.css"
+import "../css/User.scss"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserForm } from "./UserForm";
@@ -7,7 +7,8 @@ import useFetch from "../customHooks/useFetch"
 import { Table, Avatar, Space, Button, Modal, Flex, Spin } from "antd"
 import {
     DeleteOutlined,
-    EditOutlined
+    EditOutlined,
+    EyeOutlined
 } from '@ant-design/icons';
 
 
@@ -75,7 +76,7 @@ export const User = () => {
                 <Space size="middle">
                     <Link to={`/userdetail/${props.id}`}>
                         <Button type="primary"  >
-                            Detail
+                        <EyeOutlined />
                         </Button>
                     </Link>
 

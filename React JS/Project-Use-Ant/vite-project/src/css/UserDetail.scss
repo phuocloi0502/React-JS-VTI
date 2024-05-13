@@ -1,0 +1,35 @@
+$padding50:50px;
+.UserDetail{
+   margin: 0 auto;
+    text-align: center;
+    padding: $padding50;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vh;
+   
+ 
+    .ant-card-body{
+        display: flex;
+        gap: 30px;
+        .ant-descriptions-row{
+            display: flex;
+            flex-direction: column;
+        }
+        .ant-card-meta{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        
+        }
+        .ant-avatar {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .detail-button button{
+        width: 8vh;
+        height: 4vh;
+    }
+
+}

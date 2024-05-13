@@ -51,8 +51,9 @@
 .sub-menu a{
   color: rgba(0, 0, 0, 0.5) !important;
 }
-.menu-item:hover  .sub-menu{
+.menu-item:hover .sub-menu{
   display: block;
+
   
 }
 
