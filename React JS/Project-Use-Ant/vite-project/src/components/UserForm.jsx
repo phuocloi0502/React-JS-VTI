@@ -1,4 +1,4 @@
-import "../css/UserForm.css"
+// import "../css/UserForm.scss"
 import { Input, Button } from "antd"
 import { Link } from "react-router-dom"
 import { Form, Field, Formik, ErrorMessage } from 'formik';
@@ -14,8 +14,8 @@ export const UserForm = ({ data, handleInput, handleAction, avatar, text, requir
          }}
       >
          {({ errors, touched }) => (
-            <Form>
-               <div>
+            <Form className="Myform">
+              
                   <label htmlFor="name">name</label>
                   <br />
                   <Field id="name" name="name" />
@@ -28,8 +28,8 @@ export const UserForm = ({ data, handleInput, handleAction, avatar, text, requir
 
                   <br />
                   <br />
-               </div>
-               <div>
+               
+               
                   <label htmlFor="phone">phone</label>
                   <br />
                   <Field id="phone" name="phone" />
@@ -41,8 +41,7 @@ export const UserForm = ({ data, handleInput, handleAction, avatar, text, requir
                   ) : null}
                   <br />
                   <br />
-               </div>
-               <div>
+             
                   <label htmlFor="address">address</label>
                   <br />
                   <Field id="address" name="address" />
@@ -54,7 +53,7 @@ export const UserForm = ({ data, handleInput, handleAction, avatar, text, requir
                   ) : null}
                   <br />
                   <br />
-               </div>
+             
                <button type="submit">Submit</button>
             </Form>
          )}

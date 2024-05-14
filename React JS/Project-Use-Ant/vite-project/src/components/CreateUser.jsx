@@ -2,13 +2,21 @@ import { Form, Input, Button, Alert, Space, Spin } from "antd";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { UploadOutlined } from '@ant-design/icons'
-import "../css/UserForm.css"
-import { UserForm } from "./UserForm";
+import "../css/UserForm.scss"
+
+import { UserForMik } from "./UserForMik";
+import { date } from "yup";
 export const CreateUser = () => {
     const url = `https://65a147d0600f49256fb154ce.mockapi.io/users`;
     const [formData, setFormData] = useState({
 
     });
+    const data = {
+        username: '',
+        fullname: '',
+        phone:'',
+        address: '',
+    }
  
     const [avatar, setAvatar] = useState();
     const [isSpinning, setIsSpinning] = useState(false);
@@ -92,16 +100,7 @@ export const CreateUser = () => {
                     />
                 )
             }
-            <UserForm
-                data={formData}
-                handleInput={handleChange}
-                handleAction={createUser}
-                avatar={avatar}
-                text={"Create"}
-                required={true}
-            >
-
-            </UserForm>
+        <UserForMik data={data} type={'CREATE'}/>
             
 
         </div>

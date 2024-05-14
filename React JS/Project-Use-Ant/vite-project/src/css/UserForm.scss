@@ -1,0 +1,46 @@
+.MyForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #FAFCFE;
+    border-radius: 8px;
+    box-shadow: 5px 0px 20px #d8dadd;
+    padding: 50px;
+    font-weight: 400;
+    color: rgb(39, 50, 102);
+    width: 700px;
+    margin: auto;
+    font-size: 20px;
+    gap: 25px;
+
+    .row {
+     text-align: left;
+     padding: 5px;
+     
+    }
+    label{
+        flex:1;
+        text-align: right;
+        width: 100%;
+        
+
+    }
+
+    input {
+        flex: 2;
+        outline-width: 0;
+        font-size: 20px;
+        
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        color: #343536;
+        font-weight: 400;
+    }
+
+    button {
+        width: 100px;
+        margin: 10px;
+
+    }
+}
