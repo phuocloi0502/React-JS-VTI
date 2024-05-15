@@ -52,7 +52,7 @@ export const EditUser = () => {
                     />
                 )
             }
-            <UserForMik data={data}  type={'UPDATE'}/>
+            <UserForMik data={data}  type={'UPDATE'}  />
 
         </div>
     )

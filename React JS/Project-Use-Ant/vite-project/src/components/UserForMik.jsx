@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import { useFormik, ErrorMessage, Formik, Field, Form } from 'formik';
 import "../css/UserForm.scss";
 import axios from "axios"
@@ -8,8 +8,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { editUserSchema } from "./Formik/validate";
 import { EditUser } from './handleForm/Edit'
 
-export const UserForMik = ({ data,type }) => {
+export const UserForMik = ({ data, type }) => {
     let navigate = useNavigate();
+    const [avatar,setAvartar]=useState(data.avatar);
+    
 
     return (
         <Formik
@@ -24,28 +26,29 @@ export const UserForMik = ({ data,type }) => {
                     fullname: values.fullname,
                     phone: values.phone,
                     address: values.address,
+                    avatar: avatar
                 }
+         
 
                 let myUrl = `https://65a147d0600f49256fb154ce.mockapi.io/users/${values.id}`
                 //call api use axios
-                if(type=='UPDATE')
-                {
+                if (type == 'UPDATE') {
                     axios.put(myUrl, dataList)
-                    .then(res => {
-                       navigate('/user')
-                    })
-                    .catch(err => {
-                        console.error(err)
-                    })
-                } else if(type=='CREATE') {
+                        .then(res => {
+                            navigate('/user')
+                        })
+                        .catch(err => {
+                            console.error(err)
+                        })
+                } else if (type == 'CREATE') {
                     let myUrlCreate = `https://65a147d0600f49256fb154ce.mockapi.io/users/`
                     axios.post(myUrlCreate, dataList)
-                    .then(res => {
-                       navigate('/user')
-                    })
-                    .catch(err => {
-                        console.error(err)
-                    })
+                        .then(res => {
+                            navigate('/user')
+                        })
+                        .catch(err => {
+                            console.error(err)
+                        })
                 }
 
             }}  >
@@ -110,10 +113,17 @@ export const UserForMik = ({ data,type }) => {
                     </div>
                     <div className="row">
                         <label >Avatar</label>
-                        <input type='file'
-                        />
-
-                        {/* <img style={{ width: "100px", height: "100px" }} src={data.avatar} /> */}
+                      
+                        <input id="avatar" name="avatar" type="file" onChange={(event) => {
+                              setAvartar(URL.createObjectURL(event.currentTarget.files[0]))
+                        }} />
+                        {
+                            !avatar && <img style={{ width: "100px", height: "100px" }} src={data.avatar} />
+                        }
+                       { avatar&& <img style={{ width: "100px", height: "100px" }} src={avatar} />}
+                         
+                        
+                        
 
 
                     </div>
