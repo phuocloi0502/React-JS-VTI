@@ -23,7 +23,7 @@ export const deleteById = createAsyncThunk('delete', async (id, thunkAPI) => {
 export const updateUser = createAsyncThunk('update', async (body, thunkAPI) => {
     const data = (await axios.put(urlApi + body.id, body)).data;
     thunkAPI.dispatch(getAll());
-    thunkAPI.changeUserId(data.id)
+    thunkAPI.dispatch(getById(body.id))
 });
 
 // create
