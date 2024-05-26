@@ -20,13 +20,10 @@ export const deleteById = createAsyncThunk('delete', async (id, thunkAPI) => {
 });
 
 // update
-export const updateUser = createAsyncThunk('update', async (id, body, thunkAPI) => {
-    const data = await axios.put(urlApi + id, body);
-    // console.log(data.data, 'updated data')
-    //  thunkAPI.dispatch(getAll());
-    //thunkAPI.dispatch(getById(id));
-
-
+export const updateUser = createAsyncThunk('update', async (body, thunkAPI) => {
+    const data = (await axios.put(urlApi + body.id, body)).data;
+    thunkAPI.dispatch(getAll());
+    thunkAPI.changeUserId(data.id)
 });
 
 // create

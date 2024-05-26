@@ -20,6 +20,8 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getAll, createAccount } from '../../redux/slide/userSlice'
 import { toast } from "react-toastify";
+import axios from 'axios';
+import { urlApi } from '../../utils/constants';
 
 
 
@@ -51,12 +53,15 @@ const SignUp = () => {
             })
 
             if (!check) {
-                dispatch(createAccount(body));
-                if (!loading) {
-                    localStorage.setItem('isLogin', true)
-                    toast.success("Sucess !!!");
-                    navigate("/");
-                }
+
+
+                const data = (await axios.post(urlApi, body)).data;
+                localStorage.setItem('isLogin', true)
+                localStorage.setItem('idCurrent', data.id);
+                localStorage.setItem('userNameCurrent', data.username);
+                toast.success("Sucess !!!");
+                navigate("/");
+
 
             } else {
                 toast.error('User is existed !')

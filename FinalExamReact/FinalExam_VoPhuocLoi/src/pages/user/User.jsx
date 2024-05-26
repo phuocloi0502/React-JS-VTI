@@ -3,7 +3,7 @@ import { getAll, deleteById, changeUserId, changeDeleteId } from '../../redux/sl
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
-import { Table, Space, Button, Avatar, Spin, Modal } from 'antd';
+import { Table, Space, Button, Avatar, Spin, Modal, Input } from 'antd';
 import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
 import { toast } from 'react-toastify';
 import { MyForm } from '../../components/my-form/MyForm';
@@ -20,7 +20,7 @@ export const User = () => {
     });
     const [deleteId, setDeleteId] = useState();
     const stateModal = useSelector((state) => state.modalSlice.createModal);
-
+    const [searchText, setSearchText] = useState('');
 
     // get data
     const listUsers = useSelector((state) => state.dataUser.dataApi);
@@ -84,6 +84,17 @@ export const User = () => {
             title: 'User Name',
             dataIndex: 'username',
             key: 'username',
+            filteredValue: [searchText],
+            onFilter: (value, record) => {
+                return (
+                    String(record.username)
+                        .toLowerCase()
+                        .includes(value.toLowerCase()) ||
+                    String(record.email)
+                        .toLowerCase()
+                        .includes(value.toLowerCase())
+                )
+            }
         },
 
         {
@@ -160,6 +171,15 @@ export const User = () => {
                 }}>
                     + New user
                 </Button>
+                <Input.Search
+                    onSearch={(value) => {
+                        setSearchText(value)
+                    }}
+
+                    onChange={(e) => {
+                        setSearchText(e.target.value)
+                    }}
+                />
             </div>
 
             <Table

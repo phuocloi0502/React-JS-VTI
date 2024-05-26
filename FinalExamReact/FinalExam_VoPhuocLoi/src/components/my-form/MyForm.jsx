@@ -45,17 +45,14 @@ export const MyForm = ({ data, type }) => {
                 }
 
                 if (type == 'UPDATE') {
-                    console.log('body update: ', body)
+                    body.id = values.id;
+                    dispatch(updateUser(body));
 
-                    // dispatch(updateUser(data.id, body));
+                    if (!loading) {
+                        dispatch(changeStateUpdateModal(false));
+                        toast.success("Updated !!!");
+                    }
 
-                    axios.put(urlApi + data.id, body)
-                        .then(response => {
-                            dispatch(getAll());
-                            dispatch(getById(data.id));
-                            toast.success("Updated !!!");
-                            dispatch(changeStateUpdateModal(false));
-                        });
 
 
                 } else if (type == 'CREATE') {
