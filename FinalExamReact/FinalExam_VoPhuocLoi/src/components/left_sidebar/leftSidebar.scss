@@ -1,0 +1,17 @@
+.left-sidebar {
+    background: #112334;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 60px;
+    width: 20%;
+    height: 100vh;
+    color: aliceblue;
+
+    a {
+        color: aliceblue;
+    }
+
+    .wrapper-sidebar {
+        margin-top: 20px;
+    }
+}

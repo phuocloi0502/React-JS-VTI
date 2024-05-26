@@ -1,0 +1,39 @@
+.MyForm {
+    text-align: center;
+    font-weight: 400;
+    color: rgb(39, 50, 102);
+    width: 100%;
+    font-size: 17px;
+    gap: 5px;
+
+    .row {
+        text-align: left;
+        padding: 5px;
+
+    }
+
+    label {
+        text-align: right;
+        width: 100%;
+
+
+    }
+
+    input {
+        outline-width: 0;
+        border-radius: 10px;
+        border-width: 1px;
+        font-size: 17px;
+        padding: 7px;
+        margin-top: 5px;
+        width: 100%;
+        color: #343536;
+        font-weight: 400;
+    }
+
+    .button-form button {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+}

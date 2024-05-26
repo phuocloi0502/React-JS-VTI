@@ -1,0 +1,26 @@
+ @use 'styles/_colors.scss';
+
+
+ .wrapper {
+
+   text-align: center;
+
+   .content {
+     background-color: colors.$white;
+     display: flex;
+     margin: 0;
+     position: relative;
+     top: 60px;
+
+     .main-content {
+
+       margin-left: 2px;
+       margin-right: 2px;
+       height: 3000px;
+       flex-grow: 1;
+
+
+     }
+   }
+
+ }

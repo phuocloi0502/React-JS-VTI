@@ -1,0 +1,10 @@
+@use "./../../styles/_colors.scss";
+
+.wrapper-user {
+    padding: 10px;
+
+    >div {
+        text-align: right;
+        padding: 10px;
+    }
+}

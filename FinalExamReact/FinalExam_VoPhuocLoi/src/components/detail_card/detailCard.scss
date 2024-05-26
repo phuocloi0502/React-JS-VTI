@@ -1,0 +1,51 @@
+.user-detail {
+    font-size: 17px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    span {
+        color: rgb(173, 168, 168);
+        margin-right: 10px;
+    }
+
+    .row-1 {
+        display: flex;
+
+
+        .wrapper-avatar {
+            width: 80px;
+            height: 80px;
+
+            .my-avatar {
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+
+        .infor-1 {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+
+        }
+    }
+
+    .row-2 {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-style {
+        text-align: right;
+
+        span {
+            color: white;
+        }
+    }
+}

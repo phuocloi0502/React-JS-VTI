@@ -1,0 +1,17 @@
+@use "./../../styles/_colors.scss";
+
+
+.footer {
+    height: 60px;
+    background: #112334;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: colors.$white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1.5;
+
+}
